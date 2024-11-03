@@ -1,33 +1,34 @@
 import pygame
 import random
 
-
 pygame.init()
 
-
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-BROWN = (139, 69, 19)          
-BLUE = (0, 0, 255)             
+#Screen dimensions and colours for the game
+SCREEN_HEIGHT = 800
+SCREEN_WIDTH = 1000
+BLUE = (0, 0, 255)
+LIGHT_GREEN = (144, 238, 144) 
+BROWN = (139, 69, 19)                     
 ORANGE = (255, 165, 0)         
-LIGHT_GREEN = (144, 238, 144)  
 RED = (255, 0, 0)             
 
+# Creates the game screen wich is the width and height
 def create_screen():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Breakout Game")
     return screen
 
+# Create a clock object to manage the frame rate
 def create_clock():
     return pygame.time.Clock()
 
-
+# Creates the fonts for the text 
 def create_fonts():
     font = pygame.font.Font(None, 36)
     large_font = pygame.font.Font(None, 74)
     return font, large_font
 
-
+# Defines the properties of the paddle
 def create_paddle():
     paddle_width = 100
     paddle_height = 10
@@ -35,14 +36,14 @@ def create_paddle():
     paddle = pygame.Rect((SCREEN_WIDTH // 2) - (paddle_width // 2), SCREEN_HEIGHT - 40, paddle_width, paddle_height)
     return paddle, paddle_speed
 
-
+# Defines properties pf the ball
 def create_ball():
     ball_radius = 10
     ball_speed = [4, -4]
     ball = pygame.Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, ball_radius * 2, ball_radius * 2)
     return ball, ball_speed
 
-
+# Creates a grid of bricks
 def create_bricks():
     brick_rows = 5
     brick_cols = 8
